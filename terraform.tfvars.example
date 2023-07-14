@@ -1,0 +1,11 @@
+# Name of the alert policy in New Relic
+alert_policy_name = "Kubernetes Alert Policy"
+
+# Cluster names targeted by the alert conditions.
+cluster_names = ["my-awesome-cluster"]
+
+# Namespaces targeted by the alert conditions.
+namespaces = ["newrelic", "kube-system", "demo"]
+
+# Set all conditions to enabled or disabled at deploy time.
+conditions_enabled = false
