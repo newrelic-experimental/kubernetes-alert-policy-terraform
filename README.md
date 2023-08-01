@@ -43,6 +43,12 @@ export NEW_RELIC_API_KEY=<YOUR USER API KEY>
 export NEW_RELIC_REGION=US
 ```
 
+Copy the `terraform.tfvars.example` file to a new file and customize the variables.
+
+```
+cp terraform.tfvars.exmaple terraform.tfvars
+```
+
 ## Usage
 
 ```
