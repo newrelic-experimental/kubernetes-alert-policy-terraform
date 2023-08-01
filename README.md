@@ -31,6 +31,25 @@ The NRQL logic and alert thresholds contained within each condtion are meant to 
 
 - [New Relic Kubernetes Integration](https://docs.newrelic.com/docs/kubernetes-pixie/kubernetes-integration/installation/kubernetes-integration-install-configure/)
 
+
+## Getting Started
+
+The following environment variables will need to be exported:
+
+```
+export NEW_RELIC_ACCOUNT_ID=<YOUR ACCOUNT ID>
+export NEW_RELIC_LICENSE_KEY=<YOUR LICENSE KEY>
+export NEW_RELIC_API_KEY=<YOUR USER API KEY>
+export NEW_RELIC_REGION=US
+```
+
+## Usage
+
+```
+terraform init
+terraform apply -var-file=terraform.tfvars
+```
+
 ## Terraform Docs
 ---
 
@@ -93,28 +112,6 @@ No modules.
 
 No outputs.
 <!-- END_TF_DOCS -->
-
-## Installation
-
-> [Include a step-by-step procedure on how to get your code installed. Be sure to include any third-party dependencies that need to be installed separately]
-
-## Getting Started
-
-The following environment variables will need to be exported:
-
-```
-export NEW_RELIC_ACCOUNT_ID=<YOUR ACCOUNT ID>
-export NEW_RELIC_LICENSE_KEY=<YOUR LICENSE KEY>
-export NEW_RELIC_API_KEY=<YOUR USER API KEY>
-export NEW_RELIC_REGION=US
-```
-
-## Usage
-
-```
-terraform init
-terraform apply -var-file=terraform.tfvars
-```
 
 ## Support
 
