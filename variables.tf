@@ -1,13 +1,13 @@
 variable "cluster_names" {
     description = "The name of a Kubernetes cluster."
     type = list(string)
-    default = ["my-awesome-cluster"]
+    default = ["your-cluster-name"]
 }
 
-variable "namespaces" {
-    description = "Namespaces to monitor."
+variable "exclude_namespaces" {
+    description = "Namespaces to exclude from alerting."
     type = list(string)
-    default = ["newrelic"]
+    default = ["some-namespace"]
 }
 
 variable "conditions_enabled" {
