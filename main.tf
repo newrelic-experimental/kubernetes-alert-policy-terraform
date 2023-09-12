@@ -68,7 +68,7 @@ resource "newrelic_nrql_alert_condition" "node_pod_count_capacity" {
     query             = "FROM K8sPodSample, K8sNodeSample select ceil(filter(uniqueCount(podName), where status = 'Running') / latest(capacityPods) * 100) as 'Pod Capacity %' where nodeName != '' and nodeName is not null and clusterName in (${local.cluster_names}) facet nodeName, clusterName"
   }
 
-  warning {
+  critical {
     operator              = "above"
     threshold             = 90
     threshold_duration    = 300
@@ -164,7 +164,7 @@ resource "newrelic_nrql_alert_condition" "node_unschedulable" {
     query             = "from K8sNodeSample select latest(unschedulable) where clusterName in (${local.cluster_names}) facet nodeName, clusterName"
   }
 
-  warning {
+  critical {
     operator              = "above"
     threshold             = 0
     threshold_duration    = 300
@@ -232,7 +232,7 @@ resource "newrelic_nrql_alert_condition" "pods_failing_in_namespace" {
 
   critical {
     operator              = "above"
-    threshold             = 0
+    threshold             = 5
     threshold_duration    = 300
     threshold_occurrences = "ALL"
   }
@@ -591,7 +591,7 @@ resource "newrelic_nrql_alert_condition" "hpa_max_replicas" {
     query             = "FROM K8sHpaSample select latest(maxReplicas - currentReplicas) where clusterName in (${local.cluster_names}) and namespaceName not in (${local.exclude_namespaces}) facet displayName, namespaceName, clusterName"
   }
 
-  warning {
+  critical {
     operator              = "equals"
     threshold             = 0
     threshold_duration    = 300
@@ -624,7 +624,7 @@ resource "newrelic_nrql_alert_condition" "hpa_current_vs_desired_replicas" {
     query             = "FROM K8sHpaSample select latest(desiredReplicas - currentReplicas) where clusterName in (${local.cluster_names}) and namespaceName not in (${local.exclude_namespaces}) facet displayName, namespaceName, clusterName"
   }
 
-  warning {
+  critical {
     operator              = "equals"
     threshold             = 0
     threshold_duration    = 300
@@ -658,7 +658,7 @@ resource "newrelic_nrql_alert_condition" "job_failed" {
     query             = "from K8sJobSample select uniqueCount(jobName) where failed = 'true' and clusterName in (${local.cluster_names}) and namespaceName not in (${local.exclude_namespaces}) facet jobName, namespaceName, clusterName, failedPodsReason"
   }
 
-  warning {
+  critical {
     operator              = "above"
     threshold             = 0
     threshold_duration    = 60

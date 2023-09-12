@@ -1,11 +1,11 @@
 # Name of the alert policy in New Relic
-alert_policy_name = "Kubernetes Alert Policy"
+alert_policy_name = "Example Kubernetes Alert Policy"
 
-# Cluster names targeted by the alert conditions.
-cluster_names = ["my-awesome-cluster"]
+# Cluster name(s) targeted by the alert conditions.
+cluster_names = ["my-awesome-cluster", "my-awesome-cluster-two"]
 
-# Namespaces targeted by the alert conditions.
-namespaces = ["newrelic", "kube-system", "demo"]
+# Exclude the resources contained within these namespaces from alerting.
+exclude_namespaces = ["newrelic", "kube-system", "demo"]
 
 # Set all conditions to enabled or disabled at deploy time.
 conditions_enabled = false
