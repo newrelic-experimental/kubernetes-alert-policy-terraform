@@ -689,7 +689,7 @@ resource "newrelic_nrql_alert_condition" "persistent_volume_errors" {
 
 
   nrql {
-    query             = "FROM K8sPodSample, K8sNodeSample select ceil(filter(uniqueCount(podName), where status = 'Running') / latest(capacityPods) * 100) as 'Pod Capacity %' where nodeName != '' and nodeName is not null and clusterName in (${local.cluster_names}) facet nodeName, clusterName"
+    query             = "from K8sPersistentVolumeSample select uniqueCount(volumeName) where statusPhase in ('Failed','Pending') and clusterName in (${local.cluster_names}) facet volumeName, clusterName"
   }
 
   critical {
@@ -759,8 +759,8 @@ resource "newrelic_nrql_alert_condition" "etcd_file_descriptor_util" {
   }
 
   critical {
-    operator              = "below"
-    threshold             = 1
+    operator              = "above"
+    threshold             = 90
     threshold_duration    = 60
     threshold_occurrences = "ALL"
   }
