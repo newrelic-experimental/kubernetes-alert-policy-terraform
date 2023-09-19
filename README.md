@@ -65,12 +65,13 @@ terraform apply -var-file=terraform.tfvars
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.0 |
+| <a name="requirement_newrelic"></a> [newrelic](#requirement\_newrelic) | ~> 3.25.2 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_newrelic"></a> [newrelic](#provider\_newrelic) | 3.25.0 |
+| <a name="provider_newrelic"></a> [newrelic](#provider\_newrelic) | 3.25.2 |
 
 ## Modules
 
@@ -110,9 +111,9 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_alert_policy_name"></a> [alert\_policy\_name](#input\_alert\_policy\_name) | Name of the Kubernetes alert policy in New Relic | `string` | `"Kubernetes Alert Policy"` | no |
-| <a name="input_cluster_names"></a> [cluster\_names](#input\_cluster\_names) | The name of a Kubernetes cluster. | `list(string)` | <pre>[<br>  "my-awesome-cluster"<br>]</pre> | no |
+| <a name="input_cluster_names"></a> [cluster\_names](#input\_cluster\_names) | The name of a Kubernetes cluster. | `list(string)` | <pre>[<br>  "your-cluster-name"<br>]</pre> | no |
 | <a name="input_conditions_enabled"></a> [conditions\_enabled](#input\_conditions\_enabled) | Toggle to set all alert conditions as either enabled or disabled at deployment time. | `bool` | `true` | no |
-| <a name="input_namespaces"></a> [namespaces](#input\_namespaces) | Namespaces to monitor. | `list(string)` | <pre>[<br>  "newrelic"<br>]</pre> | no |
+| <a name="input_exclude_namespaces"></a> [exclude\_namespaces](#input\_exclude\_namespaces) | Namespaces to exclude from alerting. | `list(string)` | <pre>[<br>  "some-namespace"<br>]</pre> | no |
 
 ## Outputs
 
